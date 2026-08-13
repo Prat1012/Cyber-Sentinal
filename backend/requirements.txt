@@ -1,0 +1,32 @@
+# CyberSentinel backend dependencies
+# Python 3.12+ recommended
+
+# Web framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# Configuration / validation
+pydantic>=2.8.0
+pydantic-settings>=2.4.0
+python-dotenv>=1.0.1
+
+# Database
+SQLAlchemy>=2.0.31
+alembic>=1.13.2
+
+# HTTP / TLS / crypto
+requests>=2.32.0
+cryptography>=43.0.0
+
+# Authentication
+PyJWT>=2.9.0
+# bcrypt 4.x ships the C accelerator; bcrypt 5.x is pure-Python and slow.
+bcrypt>=4.0.1,<5.0.0
+email-validator>=2.1.0
+
+# PDF reporting
+reportlab>=4.2.0
+
+# Testing
+pytest>=8.3.0
+httpx>=0.27.0

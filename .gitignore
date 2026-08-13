@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+*.env.local
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated reports
+reports/*.pdf
+!reports/.gitkeep
+
+# Test artifacts
+backend/tests/lab_cert_*.pem
+backend/tests/lab_key_*.pem
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

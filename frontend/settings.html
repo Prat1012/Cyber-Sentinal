@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — CyberSentinel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-shield">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l8 3.5v5.2c0 5-3.4 9.4-8 11.3-4.6-1.9-8-6.3-8-11.3V5.5L12 2z"/><path d="M9 12l2 2 4-4.5"/>
+          </svg>
+        </span>
+        <span>Cyber<span class="accent">Sentinel</span></span>
+      </div>
+      <nav>
+        <a href="dashboard.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Dashboard</span></a>
+        <a href="scan.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="12" x2="16.5" y2="7.5"/></svg><span>New Scan</span></a>
+        <a href="targets.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg><span>Targets</span></a>
+        <a href="findings.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 16.5h-19L12 3z"/><line x1="12" y1="9.5" x2="12" y2="14"/><circle cx="12" cy="16.8" r="0.4" fill="currentColor"/></svg><span>Findings</span></a>
+        <a href="reports.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg><span>Reports</span></a>
+        <a href="settings.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><circle cx="9" cy="7" r="2"/><circle cx="16" cy="7" r="2"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></svg><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">Authorized use only<br>Assess only systems you own.</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <h1>Settings</h1>
+          <div class="subtitle">Account and platform information</div>
+        </div>
+        <div class="topbar-right">
+          <div class="user-chip"><span class="avatar" id="userAvatar">U</span><span id="userName">user</span></div>
+          <button class="btn btn-ghost btn-sm" id="logoutBtn" type="button">Log out</button>
+        </div>
+      </header>
+
+      <div class="page">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header"><h2>Account</h2></div>
+            <div class="card-body" id="profileBody">
+              <div class="kv"><span class="k">User ID</span><span class="v mono" id="profileId">—</span></div>
+              <div class="kv"><span class="k">Username</span><span class="v" id="profileUsername">—</span></div>
+              <div class="kv"><span class="k">Email</span><span class="v" id="profileEmail">—</span></div>
+              <div class="kv"><span class="k">Member since</span><span class="v" id="profileCreated">—</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h2>Platform</h2></div>
+            <div class="card-body">
+              <div class="kv"><span class="k">Application</span><span class="v">CyberSentinel 1.0.0</span></div>
+              <div class="kv"><span class="k">Risk model</span><span class="v">CVSS v3.1 base scores</span></div>
+              <div class="kv"><span class="k">Scan engines</span><span class="v">nmap / built-in TCP connect</span></div>
+              <div class="kv"><span class="k">Database</span><span class="v">SQLite (dev) · PostgreSQL-ready</span></div>
+              <div class="kv"><span class="k">API docs</span><span class="v"><a href="/api/docs" target="_blank" rel="noopener">/api/docs</a></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="card-header"><h2>Safety &amp; authorization</h2></div>
+          <div class="card-body">
+            <div class="warn-banner" style="margin-bottom:12px">
+              <span>⚠️</span>
+              <span><strong>Authorized use only.</strong> CyberSentinel must only be used against systems you own or have explicit authorization to assess: localhost, private lab environments, CTF/lab targets and intentionally vulnerable applications. Scanning systems without permission may be illegal.</span>
+            </div>
+            <p class="muted" style="font-size:13px">
+              The platform deliberately excludes destructive exploitation, credential brute-forcing,
+              denial-of-service, malware/persistence and stealth/evasion techniques. By default it refuses
+              to scan public/global IP addresses unless <span class="mono">ALLOW_EXTERNAL_TARGETS=true</span>
+              is configured for an authorized external assessment. Directory discovery is rate-limited and
+              bounded to a small wordlist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

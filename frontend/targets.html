@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Targets — CyberSentinel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-shield">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l8 3.5v5.2c0 5-3.4 9.4-8 11.3-4.6-1.9-8-6.3-8-11.3V5.5L12 2z"/><path d="M9 12l2 2 4-4.5"/>
+          </svg>
+        </span>
+        <span>Cyber<span class="accent">Sentinel</span></span>
+      </div>
+      <nav>
+        <a href="dashboard.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Dashboard</span></a>
+        <a href="scan.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="12" x2="16.5" y2="7.5"/></svg><span>New Scan</span></a>
+        <a href="targets.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg><span>Targets</span></a>
+        <a href="findings.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 16.5h-19L12 3z"/><line x1="12" y1="9.5" x2="12" y2="14"/><circle cx="12" cy="16.8" r="0.4" fill="currentColor"/></svg><span>Findings</span></a>
+        <a href="reports.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg><span>Reports</span></a>
+        <a href="settings.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><circle cx="9" cy="7" r="2"/><circle cx="16" cy="7" r="2"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="16" r="2"/><circle cx="16" cy="16" r="2"/></svg><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">Authorized use only<br>Assess only systems you own.</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <h1>Targets</h1>
+          <div class="subtitle">Authorized assessment targets</div>
+        </div>
+        <div class="topbar-right">
+          <div class="user-chip"><span class="avatar" id="userAvatar">U</span><span id="userName">user</span></div>
+          <button class="btn btn-ghost btn-sm" id="logoutBtn" type="button">Log out</button>
+        </div>
+      </header>
+
+      <div class="page">
+        <div class="warn-banner">
+          <span>⚠️</span>
+          <span>Only register targets you are explicitly authorized to assess: your own lab systems, localhost, or CTF/vulnerable-lab instances. The scanner refuses public/global addresses unless external assessments are enabled.</span>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Registered targets</h2>
+            <button class="btn btn-primary btn-sm" id="addTargetBtn" type="button">+ Add target</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>ID</th><th>Name</th><th>Address</th><th>Type</th><th>Description</th><th>Created</th><th></th></tr>
+              </thead>
+              <tbody id="targetsBody">
+                <tr><td colspan="7"><div class="loading-row"><span class="spinner"></span> Loading…</div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add target modal -->
+  <div class="modal-backdrop" id="targetModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add authorized target</h3>
+        <button class="close-x" id="closeTargetModal" type="button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="targetForm">
+          <div class="form-group">
+            <label for="targetName">Name</label>
+            <input id="targetName" placeholder="Local lab" required>
+          </div>
+          <div class="form-group mt-16">
+            <label for="targetAddress">Address</label>
+            <input id="targetAddress" placeholder="127.0.0.1 or lab.local" required>
+            <div class="hint">IP address or hostname. Only explicitly authorized lab targets.</div>
+          </div>
+          <div class="form-group mt-16">
+            <label for="targetDescription">Description <span class="hint">(optional)</span></label>
+            <textarea id="targetDescription" placeholder="Purpose, owner, authorization note…"></textarea>
+          </div>
+          <div class="form-error" id="targetFormError"></div>
+          <div class="flex-between mt-16">
+            <span class="pill">Validates IP / hostname format strictly</span>
+            <button class="btn btn-primary" id="targetSubmitBtn" type="submit">Save target</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/targets.js"></script>
+</body>
+</html>

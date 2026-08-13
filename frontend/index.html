@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberSentinel — Sign in</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="brand">
+        <span class="brand-shield">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l8 3.5v5.2c0 5-3.4 9.4-8 11.3-4.6-1.9-8-6.3-8-11.3V5.5L12 2z"/>
+            <path d="M9 12l2 2 4-4.5"/>
+          </svg>
+        </span>
+        <span>Cyber<span class="accent">Sentinel</span></span>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" id="tabLogin" type="button">Sign in</button>
+        <button class="tab" id="tabRegister" type="button">Create account</button>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginUsername">Username</label>
+          <input id="loginUsername" name="username" autocomplete="username" required>
+        </div>
+        <div class="form-group mt-16">
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="form-error" id="loginError"></div>
+        <button class="btn btn-primary w-full mt-16" id="loginBtn" type="submit">Sign in</button>
+      </form>
+
+      <form id="registerForm" hidden>
+        <div class="form-group">
+          <label for="regUsername">Username</label>
+          <input id="regUsername" name="username" autocomplete="username" required>
+        </div>
+        <div class="form-group mt-16">
+          <label for="regEmail">Email <span class="hint">(optional)</span></label>
+          <input id="regEmail" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="form-group mt-16">
+          <label for="regPassword">Password <span class="hint">(min 8 chars)</span></label>
+          <input id="regPassword" name="password" type="password" autocomplete="new-password" required>
+        </div>
+        <div class="form-group mt-16">
+          <label for="regPassword2">Confirm password</label>
+          <input id="regPassword2" type="password" autocomplete="new-password" required>
+        </div>
+        <div class="form-error" id="registerError"></div>
+        <button class="btn btn-primary w-full mt-16" id="registerBtn" type="submit">Create account</button>
+      </form>
+
+      <div class="login-footer">
+        Automated Vulnerability Assessment &amp; Security Reporting<br>
+        <strong>Authorized use only</strong> — assess only systems you own or have
+        explicit permission to test.
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
